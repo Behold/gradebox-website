@@ -49,43 +49,43 @@ export function WhySection() {
           scrollTrigger: {
             trigger: section,
             start: "top center", // Start when top of section hits middle of viewport
-            end: "bottom center", // End when section bottom hits middle of viewport
+            end: "bottom 25%", // End when section bottom hits 20% of viewport height (much later)
             scrub: 2,            // Increased scrub time for slower animation
             markers: false,      // Set to true for debugging
           }
         });
 
-        // Scale the container outward to fill the entire section
+                // Scale the container outward to fill the entire section
         tl.fromTo(container, 
           { 
             scale: 1,
             y: 0
           },
-          { 
+          {
             scale: sectionScale, // Scale to fill the entire section
             y: -50,             // Slight vertical adjustment
-            ease: "power2.out" // Smooth easing
+            ease: "power1.out" // Power1 easing for dynamic scaling
           }
         );
 
-        // Animate border-radius from rounded to sharp edges
+        // Animate border-radius from rounded to sharp edges at 90% of scaling
         tl.to(container, {
           borderRadius: "0px",
-          ease: "power3.out"
-        }, "<"); // Start at the same time
+          ease: "expo.out"
+        }, ">0.1"); // Start after 90% of scaling is complete
 
         // Scale back down as we continue scrolling
         tl.to(container, {
           scale: 1,
           y: 0,
-          ease: "power3.in"
+          ease: "power1.in"
         }, "+=0.5"); // Increased delay for slower return
 
         // Animate border-radius back to rounded corners
         tl.to(container, {
           borderRadius: "24px", // 3xl = 24px
-          ease: "power3.in"
-        }, "<"); // Start at the same time
+          ease: "power1.in"
+        }, "<"); // Start at the same time as scale back
       });
 
       return () => {
