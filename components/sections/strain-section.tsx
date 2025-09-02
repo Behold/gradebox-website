@@ -22,7 +22,7 @@ export function StrainSection() {
                   <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold leading-tight" style={{ color: 'var(--strain-section-text)' }}>
                     The Silent Strain of Grading
                   </h2>
-                  <p className="text-md sm:text-lg lg:text-[18px] leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
+                  <p className="text-md sm:text-lg lg:text-[18px] leading-tight sm:leading-relaxed lg:leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
                     Behind every stack of papers is a teacher with a story. Hear theirs—then imagine yours.
                   </p>
                 </div>
@@ -94,7 +94,7 @@ export function StrainSection() {
                   <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold" style={{ color: 'var(--strain-section-text)' }}>
                     BURNOUT & DELAYED FEEDBACK
                   </h3>
-                  <p className="leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
+                  <p className="leading-tight sm:leading-relaxed lg:leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
                     By the time I finish grading a set of essays, weeks have gone by. My students deserve timely feedback, but I can&apos;t keep up. The stress is overwhelming.
                   </p>
                 </motion.div>

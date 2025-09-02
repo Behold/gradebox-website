@@ -51,7 +51,7 @@ export function StatsSection() {
             <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold leading-tight text-foreground">
               The Hidden Cost of Manual Grading
             </h2>
-            <p className="text-md sm:text-lg lg:text-[18px] text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            <p className="text-md sm:text-lg lg:text-[18px] text-muted-foreground max-w-4xl mx-auto leading-tight sm:leading-relaxed lg:leading-relaxed">
               Teachers spend hundreds of hours each year grading, losing valuable time, delaying feedback for students, and sacrificing work-life balance.
             </p>
           </motion.div>

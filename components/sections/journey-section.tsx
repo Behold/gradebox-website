@@ -16,7 +16,7 @@ export function JourneySection() {
             <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold text-foreground leading-tight">
               One Platform. Two Journeys.
             </h2>
-            <p className="text-md sm:text-lg lg:text-[18px] text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-md sm:text-lg lg:text-[18px] text-muted-foreground max-w-3xl mx-auto leading-tight sm:leading-relaxed lg:leading-relaxed">
               Gradebox was built to serve the entire classroom
               ecosystem—teachers who need time back, and parents who want to
               stay connected.
@@ -98,7 +98,7 @@ export function JourneySection() {
                 <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
                   For Parents
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-tight sm:leading-relaxed lg:leading-relaxed">
                   Gradebox keeps you in the loop with real-time updates,
                   assignment previews, and finalized grades the moment
                   they&apos;re ready.

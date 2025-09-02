@@ -24,7 +24,7 @@ export function HeroSection() {
               </h1>
               
               {/* Subtitle */}
-              <p className="text-md sm:text-md lg:text-xl text-white/90 max-w-2xl leading-relaxed">
+              <p className="text-md sm:text-md lg:text-xl text-white/90 max-w-2xl leading-tight sm:leading-relaxed lg:leading-relaxed">
                 GradeBox is an intelligent grading platform that bridges the gap between handwritten student assignments and modern digital classrooms.
               </p>
 

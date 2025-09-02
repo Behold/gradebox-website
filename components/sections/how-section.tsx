@@ -74,7 +74,7 @@ const HowSection = () => {
           <h2 className="text-2xl lg:text-[28px] font-semibold mb-6 text-white leading-tight">
             How It Works
           </h2>
-          <p className="text-base lg:text-[18px] leading-relaxed text-white/90 max-w-lg">
+          <p className="text-base lg:text-[18px] leading-tight sm:leading-relaxed lg:leading-relaxed text-white/90 max-w-lg">
             A simple and streamlined approach designed to completely transform and modernize your grading workflow, making it faster, easier, and far more efficient than ever before.
           </p>
         </div>
