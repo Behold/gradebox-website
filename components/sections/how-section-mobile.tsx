@@ -18,20 +18,15 @@ const HowSectionMobile = () => {
       console.log('GSAP context created');
       
       const cards = gsap.utils.toArray(".card") as HTMLElement[];
-      console.log('Found cards:', cards.length);
-      console.log('Cards:', cards);
       
       if (cards.length === 0) {
-        console.error('No cards found!');
         return;
       }
       
       // Calculate card height based on aspect ratio (3:4) and viewport width
       const cardWidth = window.innerWidth - 48; // Full viewport minus 48px spacing (px-6 = 24px each side)
       const cardHeight = (cardWidth * 4) / 3; // aspect-[3/4]
-      const cardSpacing = cardHeight + 64; // Double the card height
-      
-      console.log('Card width:', cardWidth, 'Card height:', cardHeight, 'Spacing:', cardSpacing);
+      const cardSpacing = cardHeight + 64; // Card height plus 64px spacing
       
       const spacer = 32;
       const minScale = 1;
@@ -39,10 +34,7 @@ const HowSectionMobile = () => {
       const distributor = gsap.utils.distribute({ base: minScale, amount: 0 });
 
       cards.forEach((card, index) => {
-        console.log(`Setting up card ${index}:`, card);
-        
         const scaleVal = distributor(index, cards[index], cards);
-        console.log(`Card ${index} scale:`, scaleVal);
         
         // Set initial stacked positions
         gsap.set(card, {
@@ -55,7 +47,6 @@ const HowSectionMobile = () => {
             trigger: card,
             start: `top top`,
             scrub: true,
-            markers: true,
             invalidateOnRefresh: true
           },
           ease: "none",
@@ -66,16 +57,14 @@ const HowSectionMobile = () => {
           trigger: card,
           start: `top-=${index * spacer + 24} top`,
           endTrigger: '.cards',
-          end: `bottom bottom`, // End when card bottom reaches viewport top
+          end: `bottom bottom`,
           pin: true,
           pinSpacing: false,
-          markers: true,
           id: 'pin',
           invalidateOnRefresh: true,
         });
       });
       
-      console.log('All ScrollTriggers created');
       ScrollTrigger.refresh();
 
       return () => {
