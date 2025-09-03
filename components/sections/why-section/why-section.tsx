@@ -16,14 +16,14 @@ export function WhySection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+    useLayoutEffect(() => {
     const section = sectionRef.current;
     const container = containerRef.current;
     const content = contentRef.current;
 
     if (section && container && content) {
-      // Wait for next frame to ensure elements are rendered
-      requestAnimationFrame(() => {
+      // Function to calculate and apply scaling
+      const updateScaling = () => {
         // Get the content container dimensions
         const contentRect = content.getBoundingClientRect();
         const sectionRect = section.getBoundingClientRect();
@@ -44,9 +44,16 @@ export function WhySection() {
           transformOrigin: "center center"
         });
 
+        // Kill only the ScrollTrigger for this specific section
+        const existingTrigger = ScrollTrigger.getById(`why-section-${section.id || 'default'}`);
+        if (existingTrigger) {
+          existingTrigger.kill();
+        }
+
         // Create the scroll-triggered animation
         const tl = gsap.timeline({
           scrollTrigger: {
+            id: `why-section-${section.id || 'default'}`,
             trigger: section,
             start: "top center", // Start when top of section hits middle of viewport
             end: "bottom 25%", // End when section bottom hits 20% of viewport height (much later)
@@ -55,7 +62,7 @@ export function WhySection() {
           }
         });
 
-                // Scale the container outward to fill the entire section
+        // Scale the container outward to fill the entire section
         tl.fromTo(container, 
           { 
             scale: 1,
@@ -86,11 +93,37 @@ export function WhySection() {
           borderRadius: "24px", // 3xl = 24px
           ease: "power1.in"
         }, "<"); // Start at the same time as scale back
+      };
+
+      // Initial setup
+      requestAnimationFrame(updateScaling);
+
+      // Create ResizeObserver for dynamic content changes
+      const resizeObserver = new ResizeObserver(() => {
+        updateScaling();
       });
 
+      // Observe both section and content for size changes
+      resizeObserver.observe(section);
+      resizeObserver.observe(content);
+
+      // Add window resize listener for broader viewport changes
+      const handleResize = () => {
+        updateScaling();
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
-        // Cleanup ScrollTrigger
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        // Cleanup
+        resizeObserver.disconnect();
+        window.removeEventListener('resize', handleResize);
+        
+        // Kill only this section's ScrollTrigger
+        const existingTrigger = ScrollTrigger.getById(`why-section-${section.id || 'default'}`);
+        if (existingTrigger) {
+          existingTrigger.kill();
+        }
       };
     }
   }, []);

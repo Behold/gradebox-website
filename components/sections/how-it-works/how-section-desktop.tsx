@@ -1,5 +1,6 @@
 'use client';
 
+import { Container } from '@/components/layout/container';
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -80,17 +81,20 @@ const HowSectionDesktop = () => {
 
   return (
     <div ref={sectionRef} className="min-h-screen bg-transparent">
+      <Container>
       <div className="container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           {/* Left Column - How Content */}
           <div className="flex flex-col justify-center items-center lg:items-start">
             <div ref={howContentRef} className="how-content space-y-6 max-w-lg">
-              <h2 className="text-2xl font-semibold text-gray-900 dark:text-white leading-tight">
-                How It Works
-              </h2>
-              <p className="text-base leading-tight sm:leading-relaxed text-gray-700 dark:text-white/90">
-                A simple and streamlined approach designed to completely transform and modernize your grading workflow, making it faster, easier, and far more efficient than ever before.
-              </p>
+              <div className="space-y-6 text-center lg:text-left">
+                <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
+                  How It Works
+                </h2>
+                <p className="text-md sm:text-lg lg:text-[18px] text-gray-700 dark:text-white/90 leading-tight sm:leading-relaxed lg:leading-relaxed">
+                  A simple and streamlined approach designed to completely transform and modernize your grading workflow, making it faster, easier, and far more efficient than ever before.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -161,6 +165,7 @@ const HowSectionDesktop = () => {
           </div>
         </div>
       </div>
+      </Container>
     </div>
   );
 };

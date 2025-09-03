@@ -37,12 +37,14 @@ export function JoinSection() {
     <section className="join-section py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Container>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Join the Waitlist
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Be among the first to experience Gradebox when we launch. Sign up below to get early access and exclusive updates.
-          </p>
+          <div className="space-y-6">
+            <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+              Join the Waitlist
+            </h2>
+            <p className="text-md sm:text-lg lg:text-[18px] text-gray-600 dark:text-gray-300 max-w-[75vw] mx-auto leading-tight sm:leading-relaxed lg:leading-relaxed">
+              Be among the first to experience Gradebox when we launch. Sign up below to get early access and exclusive updates.
+            </p>
+          </div>
         </div>
 
         <div className="max-w-4xl mx-auto">
@@ -177,7 +179,7 @@ export function JoinSection() {
               <Button 
                 type="submit" 
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 Join Waitlist
               </Button>

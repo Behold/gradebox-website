@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/container';
+import { SectionHeader } from '@/components/ui/section-header';
 
 export function StrainSection() {
   return (
@@ -19,12 +20,14 @@ export function StrainSection() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
               >
                 <div className="space-y-6">
-                  <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold leading-tight" style={{ color: 'var(--strain-section-text)' }}>
-                    The Silent Strain of Grading
-                  </h2>
-                  <p className="text-md sm:text-lg lg:text-[18px] leading-tight sm:leading-relaxed lg:leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
-                    Behind every stack of papers is a teacher with a story. Hear theirs—then imagine yours.
-                  </p>
+                  <div className="space-y-6">
+                    <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold leading-tight text-center lg:text-left" style={{ color: 'var(--strain-section-text)' }}>
+                      The Silent Strain of Grading
+                    </h2>
+                    <p className="text-md sm:text-lg lg:text-[18px] max-w-[75vw] mx-auto lg:mx-0 leading-tight sm:leading-relaxed lg:leading-relaxed text-center lg:text-left" style={{ color: 'var(--strain-section-text)' }}>
+                      Behind every stack of papers is a teacher with a story. Hear theirs—then imagine yours.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Image Placeholder - Bottom edge with no padding */}

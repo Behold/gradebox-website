@@ -22,7 +22,7 @@ export function Logo({ className = '', width = 184, height = 48 }: LogoProps) {
   const isDark = mounted ? (resolvedTheme === 'dark') : false;
 
   // Colors for different modes - default to light mode colors to prevent hydration mismatch
-  const wordmarkColor = mounted && isDark ? '#F8F6EE' : '#2D2C2B';
+  const wordmarkColor = '#FFFFFF';
   const outlineColor = '#2D2C2B'; // Light mode outline color
 
   return (
@@ -69,13 +69,7 @@ export function Logo({ className = '', width = 184, height = 48 }: LogoProps) {
           fill={wordmarkColor}
         />
 
-        {/* Outline path - only visible in light mode */}
-        {mounted && !isDark && (
-          <path
-            d="M30.9419 18.9012V0.694553C30.9419 0.543347 30.8192 0.420715 30.668 0.420715H22.2565C22.1052 0.420715 21.9826 0.543347 21.9826 0.694553V6.71184C21.9826 6.86304 21.86 6.98568 21.7088 6.98568H15.7242C15.573 6.98568 15.4504 7.10831 15.4504 7.25951V13.2429C15.4504 13.3941 15.3278 13.5167 15.1766 13.5167H9.19261C9.04141 13.5167 8.91877 13.6393 8.91877 13.7905V18.9155C8.91877 18.9881 8.8902 19.0578 8.83841 19.1089L0.0803654 27.8682C-0.0267885 27.9753 -0.0267885 28.1486 0.0803654 28.2557L19.7443 47.9196C19.8514 48.0268 20.0247 48.0268 20.1318 47.9196L39.7958 28.2557C39.9029 28.1486 39.9029 27.9753 39.7958 27.8682L31.0228 19.0947C30.9716 19.0435 30.9425 18.9738 30.9425 18.9012H30.9419Z"
-            fill={outlineColor}
-          />
-        )}
+
         <path
           d="M24.6074 24.9625L24.7103 24.9929C25.8134 25.3161 26.8868 25.7554 27.9005 26.2995L28.3137 26.521C28.4048 26.5698 28.5155 26.5037 28.5155 26.4002V3.12098C28.5155 2.96977 28.3929 2.84714 28.2417 2.84714H24.6847C24.5335 2.84714 24.4109 2.96977 24.4109 3.12098V24.7C24.4109 24.8214 24.4907 24.9286 24.6074 24.9625Z"
           fill="#0091FF"
