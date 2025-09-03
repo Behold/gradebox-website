@@ -46,8 +46,8 @@
 
 :root {
   --color-bg: #ef735a;
-  --why-section-bg-light: var(--sidebar);
-  --why-section-bg-dark: var(--primary);
+  --why-bg-light: var(--sidebar);
+  --why-bg-dark: var(--primary);
   --strain-section-bg: #1a1a2e;
   --strain-section-card: #16213e;
   --strain-section-text: #ffffff;

@@ -2,32 +2,33 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/layout/container';
+import { STATS_IMAGES } from '@/constants/images';
 
 export function StatsSection() {
   const stats = [
     {
-      iconSrc: '/image-stats--hourglass.svg',
+      iconSrc: STATS_IMAGES.hourglass,
       iconColor: 'text-blue-500',
       stat: '350+',
       statColor: 'text-blue-500',
       description: 'hours per year are spent grading, which equals a full workday every week lost to paperwork instead of teaching.'
     },
     {
-      iconSrc: '/image-stats--balance.svg',
+      iconSrc: STATS_IMAGES.balance,
       iconColor: 'text-orange-500',
       stat: '75%',
       statColor: 'text-orange-500',
       description: 'teachers grade outside contracted hours, working nights, weekends, and breaks —eroding their work-life balance.'
     },
     {
-      iconSrc: '/image-stats--lamp.svg',
+      iconSrc: STATS_IMAGES.lamp,
       iconColor: 'text-purple-500',
       stat: '30+',
       statColor: 'text-purple-500',
       description: 'hours weekly are consumed by detailed feedback, delaying returns and limiting students\' ability to act.'
     },
     {
-      iconSrc: '/image-stats--clock.svg',
+      iconSrc: STATS_IMAGES.clock,
       iconColor: 'text-pink-500',
       stat: '5',
       statColor: 'text-pink-500',

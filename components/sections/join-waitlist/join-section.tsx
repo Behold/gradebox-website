@@ -3,10 +3,7 @@
 import { useState } from 'react';
 import { Container } from '@/components/layout/container';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { FloatingInput, FloatingSelect, FloatingTextarea } from '@/components/ui/form-elements';
 
 export function JoinSection() {
   const [formData, setFormData] = useState({
@@ -34,157 +31,150 @@ export function JoinSection() {
   };
 
   return (
-    <section className="join-section py-24 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <section id="join-section" className="join-section py-24 bg-[#F8F6EE]">
       <Container>
-        <div className="text-center mb-16">
-          <div className="space-y-6">
-            <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-              Join the Waitlist
-            </h2>
-            <p className="text-md sm:text-lg lg:text-[18px] text-gray-600 dark:text-gray-300 max-w-[75vw] mx-auto leading-tight sm:leading-relaxed lg:leading-relaxed">
-              Be among the first to experience Gradebox when we launch. Sign up below to get early access and exclusive updates.
-            </p>
+        <div className="mx-auto">
+          {/* Main Card Container */}
+          <div className="bg-white rounded-3xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              {/* Left Side - Illustration */}
+              <div className="p-12 md:pl-0 flex items-center">
+                <div className="w-100 aspect-square">
+                  <img 
+                    src="/images/image-join.svg" 
+                    alt="Join Gradebox illustration"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Right Side - Form */}
+              <div className="p-12 md:pl-0">
+                <div className="space-y-8">
+                  {/* Header */}
+                  <div className="space-y-4">
+                    <h2 className="text-3xl font-bold text-gray-900">
+                      Get Early Access
+                    </h2>
+                    <p className="text-gray-600 text-lg">
+                      Join our waitlist and be among the first to experience the future of grading.
+                    </p>
+                  </div>
+
+                  {/* Form */}
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                                {/* Name Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div>
+                        <FloatingInput
+                          id="firstName"
+                          label="First Name"
+                          type="text"
+                          value={formData.firstName}
+                          onChange={(e) => handleInputChange('firstName', e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <FloatingInput
+                          id="lastName"
+                          label="Last Name"
+                          type="text"
+                          value={formData.lastName}
+                          onChange={(e) => handleInputChange('lastName', e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Work Email and Phone Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div>
+                        <FloatingInput
+                          id="email"
+                          label="Work Email"
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => handleInputChange('email', e.target.value)}
+                        />
+                      </div>
+                      <div>
+                        <FloatingInput
+                          id="phone"
+                          label="Phone Number"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => handleInputChange('phone', e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Position, Subject, Grade Level Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div>
+                        <FloatingSelect
+                          value={formData.position}
+                          onValueChange={(value) => handleInputChange('position', value)}
+                          label="Position"
+                        >
+                          <option value="educator">Educator</option>
+                          <option value="teacher">Teacher</option>
+                          <option value="administrator">Administrator</option>
+                          <option value="principal">Principal</option>
+                          <option value="other">Other</option>
+                        </FloatingSelect>
+                      </div>
+                      <div>
+                        <FloatingSelect
+                          value={formData.subject}
+                          onValueChange={(value) => handleInputChange('subject', value)}
+                          label="Subject"
+                        >
+                          <option value="math">Math</option>
+                          <option value="science">Science</option>
+                          <option value="english">English</option>
+                          <option value="history">History</option>
+                          <option value="other">Other</option>
+                        </FloatingSelect>
+                      </div>
+                      <div>
+                        <FloatingSelect
+                          value={formData.gradeLevel}
+                          onValueChange={(value) => handleInputChange('gradeLevel', value)}
+                          label="Grade Level"
+                        >
+                          <option value="elementary">Elementary (K-5)</option>
+                          <option value="middle">Middle School (6-8)</option>
+                          <option value="high">High School (9-12)</option>
+                          <option value="college">College/University</option>
+                          <option value="other">Other</option>
+                        </FloatingSelect>
+                      </div>
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <FloatingTextarea
+                        id="message"
+                        label="Message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        placeholder="Tell us about your grading challenges..."
+                      />
+                    </div>
+
+                    {/* Submit Button */}
+                    <div>
+                      <Button 
+                        type="submit" 
+                        className="w-full text-lg px-12 py-8 bg-[#054BC1] font-bold text-white font-semibold rounded-full transform hover:scale-105 hover:bg-[#054BC1]/90 transition-all duration-200 flex items-center gap-2"
+                      >
+                        Join the waitlist
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Name Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="firstName" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  First Name
-                </Label>
-                <Input
-                  id="firstName"
-                  type="text"
-                  value={formData.firstName}
-                  onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className="mt-2"
-                />
-              </div>
-              <div>
-                <Label htmlFor="lastName" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Last Name
-                </Label>
-                <Input
-                  id="lastName"
-                  type="text"
-                  value={formData.lastName}
-                  onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className="mt-2"
-                />
-              </div>
-            </div>
-
-            {/* Contact Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="email" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Email Address
-                </Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  className="mt-2"
-                />
-              </div>
-              <div>
-                <Label htmlFor="phone" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Phone Number
-                </Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange('phone', e.target.value)}
-                  className="mt-2"
-                />
-              </div>
-            </div>
-
-            {/* Position, Subject, Grade Level Row */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <Label htmlFor="position" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Position
-                </Label>
-                <Select value={formData.position} onValueChange={(value) => handleInputChange('position', value)}>
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Choose one" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="teacher">Teacher</SelectItem>
-                    <SelectItem value="administrator">Administrator</SelectItem>
-                    <SelectItem value="counselor">Counselor</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="subject" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Subject
-                </Label>
-                <Select value={formData.subject} onValueChange={(value) => handleInputChange('subject', value)}>
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Choose one" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="math">Math</SelectItem>
-                    <SelectItem value="science">Science</SelectItem>
-                    <SelectItem value="english">English</SelectItem>
-                    <SelectItem value="social-studies">Social Studies</SelectItem>
-                    <SelectItem value="arts">Arts</SelectItem>
-                    <SelectItem value="physical-education">Physical Education</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label htmlFor="gradeLevel" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                  Grade Level
-                </Label>
-                <Select value={formData.gradeLevel} onValueChange={(value) => handleInputChange('gradeLevel', value)}>
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Choose one" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="elementary">Elementary (K-5)</SelectItem>
-                    <SelectItem value="middle">Middle School (6-8)</SelectItem>
-                    <SelectItem value="high">High School (9-12)</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Message */}
-            <div>
-              <Label htmlFor="message" className="text-base font-medium text-gray-700 dark:text-gray-300">
-                Additional Message (Optional)
-              </Label>
-              <Textarea
-                id="message"
-                value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
-                placeholder="Tell us more about your interest in Gradebox..."
-                className="mt-2 min-h-[120px]"
-              />
-            </div>
-
-            {/* Submit Button */}
-            <div className="text-center">
-              <Button 
-                type="submit" 
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Join Waitlist
-              </Button>
-            </div>
-          </form>
         </div>
       </Container>
     </section>

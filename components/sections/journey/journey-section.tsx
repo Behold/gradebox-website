@@ -22,9 +22,9 @@ export function JourneySection() {
           </div>
 
           {/* Content Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* For Educators */}
-            <div className="space-y-0">
+            <div className="space-y-0 flex flex-col">
               {/* Image */}
               <motion.div 
                 className="w-full aspect-[4/3] rounded-t-xl overflow-hidden"
@@ -49,23 +49,25 @@ export function JourneySection() {
               </motion.div>
 
               {/* Content Card */}
-              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10">
-                <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
-                  For Educators
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Gradebox reduces grading overload by digitizing student work,
-                  automating AI feedback, and syncing directly to your
-                  gradebook.
-                </p>
-                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200 w-full sm:w-auto">
+              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between">
+                <div className="space-y-6">
+                  <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
+                    For Educators
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    Gradebox reduces grading overload by digitizing student work,
+                    automating AI feedback, and syncing directly to your
+                    gradebook.
+                  </p>
+                </div>
+                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
                   Read more
                 </Button>
               </div>
             </div>
 
             {/* For Parents */}
-            <div className="space-y-0">
+            <div className="space-y-0 flex flex-col">
               {/* Image */}
               <motion.div 
                 className="w-full aspect-[4/3] rounded-t-xl overflow-hidden"
@@ -90,16 +92,18 @@ export function JourneySection() {
               </motion.div>
 
               {/* Content Card */}
-              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10">
-                <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
-                  For Parents
-                </h3>
-                <p className="text-muted-foreground leading-tight sm:leading-relaxed lg:leading-relaxed">
-                  Gradebox keeps you in the loop with real-time updates,
-                  assignment previews, and finalized grades the moment
-                  they&apos;re ready.
-                </p>
-                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200 w-full sm:w-auto">
+              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between">
+                <div className="space-y-6">
+                  <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
+                    For Parents
+                  </h3>
+                  <p className="text-muted-foreground leading-tight sm:leading-relaxed lg:leading-relaxed">
+                    Gradebox keeps you in the loop with real-time updates,
+                    assignment previews, and finalized grades the moment
+                    they&apos;re ready.
+                  </p>
+                </div>
+                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
                   Read more
                 </Button>
               </div>

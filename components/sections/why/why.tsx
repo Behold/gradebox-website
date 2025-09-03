@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { HERO_IMAGES } from '@/constants/images';
+import { Container } from '@/components/layout/container';
 
 // Register ScrollTrigger globally
 if (typeof window !== 'undefined') {
@@ -45,7 +46,7 @@ export function WhySection() {
         });
 
         // Kill only the ScrollTrigger for this specific section
-        const existingTrigger = ScrollTrigger.getById(`why-section-${section.id || 'default'}`);
+        const existingTrigger = ScrollTrigger.getById(`why-${section.id || 'default'}`);
         if (existingTrigger) {
           existingTrigger.kill();
         }
@@ -53,7 +54,7 @@ export function WhySection() {
         // Create the scroll-triggered animation
         const tl = gsap.timeline({
           scrollTrigger: {
-            id: `why-section-${section.id || 'default'}`,
+            id: `why-${section.id || 'default'}`,
             trigger: section,
             start: "top center", // Start when top of section hits middle of viewport
             end: "bottom 25%", // End when section bottom hits 20% of viewport height (much later)
@@ -120,7 +121,7 @@ export function WhySection() {
         window.removeEventListener('resize', handleResize);
         
         // Kill only this section's ScrollTrigger
-        const existingTrigger = ScrollTrigger.getById(`why-section-${section.id || 'default'}`);
+        const existingTrigger = ScrollTrigger.getById(`why-${section.id || 'default'}`);
         if (existingTrigger) {
           existingTrigger.kill();
         }
@@ -129,7 +130,7 @@ export function WhySection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="why-section py-20 overflow-hidden relative px-6 sm:px-6 lg:px-8">
+            <section ref={sectionRef} className="why py-20 overflow-hidden relative px-6 sm:px-6 lg:px-8">
       {/* Content that stays completely unchanged - positioned to maintain section height */}
       <div 
         ref={contentRef}
@@ -139,6 +140,7 @@ export function WhySection() {
           willChange: "transform"
         }}
       >
+        <Container>
         <h2 className="text-xl sm:text-2xl lg:text-[28px] font-semibold text-white leading-tight">
           Why we&apos;re building Gradebox
         </h2>
@@ -161,6 +163,7 @@ export function WhySection() {
             style={{ maxWidth: '75%' }}
           />
         </div>
+        </Container>
       </div>
 
       {/* Container that will scale - positioned behind content */}

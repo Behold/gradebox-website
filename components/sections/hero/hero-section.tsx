@@ -3,10 +3,24 @@
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
-import { Flag } from 'lucide-react';
+import { Hand } from 'lucide-react';
 import { AvatarCircles } from "@/components/ui/avatar-circles";
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { PROFILE_IMAGES } from '@/constants/images';
 
 export function HeroSection() {
+  // Register GSAP ScrollTo plugin
+  gsap.registerPlugin(ScrollToPlugin);
+
+  const scrollToJoin = () => {
+    gsap.to(window, {
+      duration: 2,
+      scrollTo: "#join-section",
+      ease: "expo.out"
+    });
+  };
+
   return (
     <section className="relative h-screen bg-[#01092A] text-white">
         <Container className="relative z-10 h-full flex flex-col justify-center">
@@ -15,7 +29,7 @@ export function HeroSection() {
             <div className="space-y-8 text-center lg:text-left">
               {/* Logo */}
               <div className="flex items-center justify-center lg:justify-start">
-                <Logo height={48} />
+                <Logo height={48} showOutline={false}/>
               </div>
 
               {/* Main Heading */}
@@ -30,8 +44,11 @@ export function HeroSection() {
 
               {/* CTA Button */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Button className="text-lg px-12 py-8 bg-[#054BC1] font-bold text-white font-semibold rounded-full transform hover:scale-105 hover:bg-[#054BC1]/90 transition-all duration-200 flex items-center gap-2">
-                  <Flag className="w-5 h-5" />
+                <Button 
+                  onClick={scrollToJoin}
+                  className="text-lg px-12 py-8 bg-[#054BC1] font-bold text-white font-semibold rounded-full transform hover:scale-105 hover:bg-[#054BC1]/90 transition-all duration-200 flex items-center gap-2"
+                >
+                  <Hand className="w-5 h-5" />
                   Join the waitlist
                 </Button>
               </div>
@@ -41,12 +58,12 @@ export function HeroSection() {
                 <AvatarCircles
                   numPeople={12}
                   avatarUrls={[
-                    { imageUrl: "/profile-photo-1.png", profileUrl: "#" },
-                    { imageUrl: "/profile-photo-2.png", profileUrl: "#" },
-                    { imageUrl: "/profile-photo-3.png", profileUrl: "#" },
-                    { imageUrl: "/profile-photo-4.png", profileUrl: "#" },
-                    { imageUrl: "/profile-photo-5.png", profileUrl: "#" },
-                    { imageUrl: "/profile-photo-6.png", profileUrl: "#" },
+                    PROFILE_IMAGES.photo1,
+                    PROFILE_IMAGES.photo2,
+                    PROFILE_IMAGES.photo3,
+                    PROFILE_IMAGES.photo4,
+                    PROFILE_IMAGES.photo5,
+                    PROFILE_IMAGES.photo6,
                   ]}
                   className="flex-shrink-0"
                 />

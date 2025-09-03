@@ -4,7 +4,7 @@ import { useId, useState, useEffect } from 'react';
 import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
-import { Label } from '@/components/ui/label';
+import { Label } from '@/components/ui/form-elements';
 import { Switch } from '@/components/ui/switch';
 
 export function ThemeToggle() {
