@@ -55,18 +55,20 @@ const HowSectionDesktop = () => {
       tl.set(c1.current, { yPercent: 0 });
       tl.set(howContentRef.current, { yPercent: 0 });
 
-      tl.to(c2.current, { xPercent: -10, yPercent: 15, rotation: 12 });
+      tl.to(c2.current, { xPercent: -15, yPercent: 15, rotation: 16 });
       tl.addLabel("card2");
-      tl.to(c1.current, { xPercent: -20, yPercent: 10, rotation: -8 }, "-=0.3");
+      tl.to(c1.current, { xPercent: -12, yPercent: 10, rotation: -8 }, "-=0.3");
 
       tl.to(c3.current, { xPercent: 0, yPercent: 20, rotation: -5 });
       tl.addLabel("card3");
       tl.to(c2.current, { xPercent: -29, yPercent: 10, rotation: 7 }, "-=0.3");
-      tl.to(c1.current, { xPercent: -50, yPercent: 14, rotation: 5 }, "-=0.3");
+      tl.to(c1.current, { xPercent: -40, yPercent: 17, rotation: -7 }, "-=0.3");
 
-      tl.to(c4.current, { xPercent: 10, yPercent: 25, rotation: 8 });
+      tl.to(c4.current, { xPercent: 3, yPercent: 25, rotation: 8 });
       tl.addLabel("card4");
-      tl.to(c3.current, { xPercent: 0, yPercent: 20, rotation: -5 }, "-=0.3");
+      tl.to(c3.current, { xPercent: -13, yPercent: 20, rotation: -17 }, "-=0.3");
+      tl.to(c2.current, { xPercent: -32, yPercent: 7, rotation: 2 }, "-=0.3");
+      tl.to(c1.current, { xPercent: -42, yPercent: 20, rotation: -4 }, "-=0.3");
 
       ScrollTrigger.refresh();
 
@@ -82,7 +84,7 @@ const HowSectionDesktop = () => {
   return (
     <div ref={sectionRef} className="min-h-screen bg-transparent">
       <Container>
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 pb-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen">
           {/* Left Column - How Content */}
           <div className="flex flex-col justify-center items-center lg:items-start">
@@ -101,7 +103,7 @@ const HowSectionDesktop = () => {
           {/* Right Column - Animated Cards */}
           <div 
             ref={cardsRef}
-            className="relative h-screen items-center flex justify-center"
+            className="relative h-screen py-16 items-start flex justify-center"
           >
             {/* Card 1 - Upload Assignment */}
             <div 

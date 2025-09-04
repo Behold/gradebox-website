@@ -22,22 +22,22 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative pt-32 bg-[#01092A] text-white flex flex-col space-y-8">
+    <section className="relative pt-16 bg-[#01092A] text-white flex flex-col space-y-16">
         <Container className="relative z-10 flex flex-col justify-center">
           {/* Centered Content */}
           <div className="text-center space-y-6 max-w-4xl mx-auto">
             {/* Logo */}
-            <div className="flex items-center justify-center">
-              <Logo height={48} showOutline={false}/>
+            <div className="flex items-center justify-center mb-12">
+              <Logo height={40} showOutline={false}/>
             </div>
 
             {/* Main Heading */}
             <h1 className='text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[120%] text-white'>
-              Transform Paper Assignments into Your Digital Gradebook
+              Transform Paper Assignments <br className="hidden sm:block"/>into Your Digital Gradebook
             </h1>
             
             {/* Subtitle */}
-            <p className="text-md sm:text-md lg:text-xl text-white/90 max-w-2xl mx-auto leading-tight sm:leading-relaxed lg:leading-relaxed">
+            <p className="text-md sm:text-md lg:text-xl text-white/90 max-w-2xl mx-auto sm:leading-relaxed lg:leading-relaxed">
               GradeBox is an intelligent grading platform that bridges the gap between handwritten student assignments and modern digital classrooms.
             </p>
 
@@ -52,22 +52,23 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Social Proof */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
-              <AvatarCircles
-                numPeople={12}
-                avatarUrls={[
-                  PROFILE_IMAGES.photo1,
-                  PROFILE_IMAGES.photo2,
-                  PROFILE_IMAGES.photo3,
-                  PROFILE_IMAGES.photo4,
-                  PROFILE_IMAGES.photo5,
-                  PROFILE_IMAGES.photo6,
-                ]}
-                className="flex-shrink-0"
-              />
+            <div className="flex flex-col items-center gap-2">
+              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
+                <AvatarCircles
+                  numPeople={12}
+                  avatarUrls={[
+                    PROFILE_IMAGES.photo1,
+                    PROFILE_IMAGES.photo2,
+                    PROFILE_IMAGES.photo3,
+                    PROFILE_IMAGES.photo4,
+                    PROFILE_IMAGES.photo5,
+                    PROFILE_IMAGES.photo6,
+                  ]}
+                  className="flex-shrink-0"
+                />
+              </div>
+              <p className="text-white text-sm text-center">Be part of the movement helping teachers reclaim their time.</p>
             </div>
-            <p className="text-white/80 text-sm text-center">Be part of the movement helping teachers reclaim their time.</p>
           </div>
         </Container>
 

@@ -178,51 +178,51 @@ export function GradingSection() {
             >
                          {/* Card 1: Time Spent */}
              <motion.div 
-                 className="rounded-full p-6 space-y-4"
+                 className="rounded-full py-8 px-12 space-y-3"
                  style={{ backgroundColor: '#6822BC' }}
-                 initial={{ opacity: 0, y: 30, x: -20 }}
+                 initial={{ opacity: 0, y: 0, x: -80 }}
                  whileInView={{ opacity: 1, y: 0, x: 0 }}
                  viewport={{ once: true, margin: "-50px" }}
-                 transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+                 transition={{ duration: 1.2, delay: 0.2, ease: "anticipate" }}
              >
-                <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold" style={{ color: 'var(--strain-section-text)' }}>
-                TIME SPENT
+                <h3 className="text-lg sm:text-xl lg:text-lg font-semibold" style={{ color: 'var(--strain-section-text)' }}>
+                Time Spent
                 </h3>
-                <p className="leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
+                <p className="leading-tight" style={{ color: 'var(--strain-section-text)' }}>
                 I spend hours each night grading assignments. By the time I&apos;m done, it&apos;s midnight. I barely have energy left for planning tomorrow&apos;s lessons.
                 </p>
             </motion.div>
 
                          {/* Card 2: Errors & Inconsistencies */}
              <motion.div 
-                 className="rounded-full p-6 space-y-4"
+                 className="rounded-full py-8 px-12 space-y-3"
                  style={{ backgroundColor: '#6822BC' }}
-                 initial={{ opacity: 0, y: 30, x: 20 }}
-                 whileInView={{ opacity: 1, y: 0, x: 0 }}
-                 viewport={{ once: true, margin: "-50px" }}
-                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                 initial={{ opacity: 0, y: 0, x: 0 }}
+                 whileInView={{ opacity: 1, y: 0, x: -80 }}
+                 viewport={{ once: true, margin: "-100px" }}
+                 transition={{ duration: 1.2, delay: 0.2, ease: "anticipate" }}
              >
-                <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold" style={{ color: 'var(--strain-section-text)' }}>
-                ERRORS & INCONSISTENCIES
+                <h3 className="text-lg sm:text-xl lg:text-lg font-semibold" style={{ color: 'var(--strain-section-text)' }}>
+                Errors & Inconsistencies
                 </h3>
-                <p className="leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
+                <p className="leading-tight" style={{ color: 'var(--strain-section-text)' }}>
                 No matter how careful I am, mistakes creep into my grading. A miscalculated score here, an overlooked answer there—it&apos;s frustrating for me and unfair to my students.
                 </p>
             </motion.div>
 
                          {/* Card 3: Burnout & Delayed Feedback */}
              <motion.div 
-                 className="rounded-full p-6 space-y-4"
+                 className="rounded-full py-8 px-12 space-y-3"
                  style={{ backgroundColor: '#6822BC' }}
-                 initial={{ opacity: 0, y: 30, x: -20 }}
-                 whileInView={{ opacity: 1, y: 0, x: 0 }}
+                 initial={{ opacity: 0, y: 0, x: 50 }}
+                 whileInView={{ opacity: 1, y: 0, x: -30 }}
                  viewport={{ once: true, margin: "-50px" }}
-                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                 transition={{ duration: 1.2, delay: 0.2, ease: "anticipate" }}
              >
-                <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold" style={{ color: 'var(--strain-section-text)' }}>
-                BURNOUT & DELAYED FEEDBACK
+                <h3 className="text-lg sm:text-xl lg:text-lg font-semibold" style={{ color: 'var(--strain-section-text)' }}>
+                Burnout & Delayed Feedback
                 </h3>
-                <p className="leading-tight sm:leading-relaxed lg:leading-relaxed" style={{ color: 'var(--strain-section-text)' }}>
+                <p className="leading-tight" style={{ color: 'var(--strain-section-text)' }}>
                 By the time I finish grading a set of essays, weeks have gone by. My students deserve timely feedback, but I can&apos;t keep up. The stress is overwhelming.
                 </p>
             </motion.div>
