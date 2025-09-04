@@ -218,7 +218,7 @@ export function JoinSection() {
                     {submitStatus === 'success' && (
                       <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
                         <p className="text-green-800 font-medium">
-                          🎉 Thanks for joining! We'll be in touch soon.
+                          🎉 Thanks for joining! We&apos;ll be in touch soon.
                         </p>
                       </div>
                     )}

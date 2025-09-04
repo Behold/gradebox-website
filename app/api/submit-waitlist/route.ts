@@ -1,5 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+interface SlackBlock {
+  type: string;
+  text?: {
+    type: string;
+    text: string;
+  };
+  fields?: {
+    type: string;
+    text: string;
+  }[];
+  elements?: {
+    type: string;
+    text: string;
+  }[];
+}
+
+interface SlackMessage {
+  text: string;
+  blocks: SlackBlock[];
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.json();
@@ -24,7 +45,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Format the message for Slack
-    const slackMessage = {
+    const slackMessage: SlackMessage = {
       text: "🎉 New Waitlist Signup!",
       blocks: [
         {
