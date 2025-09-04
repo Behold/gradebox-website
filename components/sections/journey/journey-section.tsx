@@ -49,7 +49,7 @@ export function JourneySection() {
               </motion.div>
 
               {/* Content Card */}
-              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between">
+              <div className="bg-[#F8F6EE] rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between items-center">
                 <div className="space-y-6">
                   <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
                     For Educators
@@ -60,7 +60,7 @@ export function JourneySection() {
                     gradebook.
                   </p>
                 </div>
-                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
+                <Button className="px-12 py-6 rounded-full bg-[#969492] font-bold text-white transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
                   Read more
                 </Button>
               </div>
@@ -92,7 +92,7 @@ export function JourneySection() {
               </motion.div>
 
               {/* Content Card */}
-              <div className="bg-[#F8F6EE] border border-border rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between">
+              <div className="bg-[#F8F6EE] rounded-xl p-8 text-center space-y-6 relative z-10 flex-1 flex flex-col justify-between items-center">
                 <div className="space-y-6">
                   <h3 className="text-lg sm:text-xl lg:text-[20px] font-bold text-card-foreground">
                     For Parents
@@ -103,7 +103,7 @@ export function JourneySection() {
                     they&apos;re ready.
                   </p>
                 </div>
-                <Button className="px-8 py-3 rounded-full bg-[#969492] font-bold text-white tracking-widest uppercase transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
+                <Button className="flex-auto px-12 py-6 rounded-full bg-[#969492] font-bold text-white transform hover:scale-105 hover:bg-[#969492]/90 transition-all duration-200">
                   Read more
                 </Button>
               </div>

@@ -17,6 +17,9 @@ export function JoinSection() {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -26,8 +29,40 @@ export function JoinSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/submit-waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          position: '',
+          subject: '',
+          gradeLevel: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -165,11 +200,36 @@ export function JoinSection() {
                     <div>
                       <Button 
                         type="submit" 
-                        className="w-full text-lg px-12 py-8 bg-[#054BC1] font-bold text-white font-semibold rounded-full transform hover:scale-105 hover:bg-[#054BC1]/90 transition-all duration-200 flex items-center gap-2"
+                        disabled={isSubmitting}
+                        className="w-full text-lg px-12 py-8 bg-[#054BC1] font-bold text-white font-semibold rounded-full transform hover:scale-105 hover:bg-[#054BC1]/90 transition-all duration-200 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
                       >
-                        Join the waitlist
+                        {isSubmitting ? (
+                          <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            Submitting...
+                          </>
+                        ) : (
+                          'Join the waitlist'
+                        )}
                       </Button>
                     </div>
+
+                    {/* Status Messages */}
+                    {submitStatus === 'success' && (
+                      <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <p className="text-green-800 font-medium">
+                          🎉 Thanks for joining! We'll be in touch soon.
+                        </p>
+                      </div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <div className="text-center p-4 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-red-800 font-medium">
+                          ❌ Something went wrong. Please try again.
+                        </p>
+                      </div>
+                    )}
                   </form>
                 </div>
               </div>

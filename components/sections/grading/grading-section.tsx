@@ -144,42 +144,28 @@ export function GradingSection() {
       >
         <Container>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Section - Title, Description, and Image */}
+            {/* Left Section - Title and Description */}
             <motion.div 
-            className="space-y-8"
+            className="space-y-6"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             >
-            <div className="space-y-6">
-                <div className="space-y-6">
                 <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold leading-tight text-center lg:text-left" style={{ color: 'var(--strain-section-text)' }}>
                     The Silent Strain of Grading
                 </h2>
                 <p className="text-md sm:text-lg lg:text-[18px] max-w-[75vw] mx-auto lg:mx-0 leading-tight sm:leading-relaxed lg:leading-relaxed text-center lg:text-left" style={{ color: 'var(--strain-section-text)' }}>
                     Behind every stack of papers is a teacher with a story. <br/>Hear theirs—then imagine yours.
                 </p>
-                </div>
-            </div>
-
-                         {/* Grading Illustration */}
-             <motion.div 
-                 className="w-full aspect-square rounded-2xl flex items-center justify-center overflow-hidden"
-                 initial={{ opacity: 0, y: 30 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true, margin: "-50px" }}
-                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-             >
-                 <Image
-                     src={OTHER_IMAGES.grading}
-                     alt="Grading workflow illustration"
-                     width={400}
-                     height={400}
-                     className="w-full h-full object-contain"
-                     style={{ aspectRatio: '1/1' }}
-                 />
-             </motion.div>
+                <Image
+                    src={OTHER_IMAGES.grading}
+                    alt="Grading workflow illustration"
+                    width={400}
+                    height={400}
+                    className="h-[60%] object-contain"
+                    style={{ maxHeight: '100%' }}
+                    />
             </motion.div>
 
             {/* Right Section - Three Challenge Cards with Offset */}
@@ -256,7 +242,6 @@ export function GradingSection() {
       >
         {/* Background that scales */}
         <div className="rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 relative mx-auto h-full" style={{ maxWidth: "1280px", backgroundColor: '#2D065C' }}>
-          {/* This div is just for the background - no content */}
         </div>
       </div>
     </section>
