@@ -71,12 +71,12 @@ export function JoinSection() {
         <div className="mx-auto">
           {/* Main Card Container */}
           <div className="bg-white rounded-3xl overflow-hidden">
-            <div className="grid grid-cols-1 lg:grid-cols-2">
+            <div className="grid grid-cols-1 lg:grid-cols-3">
               {/* Left Side - Illustration */}
-              <div className="p-12 md:pl-0 flex items-center">
+              <div className="p-12 md:pl-0 flex items-center lg:col-span-1">
                 <div className="w-100 aspect-square">
                   <img 
-                    src="/images/image-join.svg" 
+                    src="/illustrations/join-illustration.svg" 
                     alt="Join Gradebox illustration"
                     className="w-full h-full object-contain"
                   />
@@ -84,7 +84,7 @@ export function JoinSection() {
               </div>
 
               {/* Right Side - Form */}
-              <div className="p-12 md:pl-0">
+              <div className="p-12 md:pl-0 lg:col-span-2">
                 <div className="space-y-8">
                   {/* Header */}
                   <div className="space-y-4">

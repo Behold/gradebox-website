@@ -19,8 +19,12 @@ const HowSectionDesktop = () => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // Calculate dynamic offscreen positioning
-      const cardWidth = 400; // max-w-[400px]
-      const offscreenOffset = (window.innerWidth - cardWidth) / cardWidth * 100 + 20;
+      const calculateOffscreenOffset = () => {
+        const cardWidth = 400; // max-w-[400px]
+        return (window.innerWidth - cardWidth) / cardWidth * 100 + 20;
+      };
+
+      const offscreenOffset = calculateOffscreenOffset();
 
       // Set initial states with dynamic positioning
       gsap.set(c1.current, { xPercent: 0, yPercent: 0, rotation: 0 });
@@ -29,12 +33,35 @@ const HowSectionDesktop = () => {
       gsap.set(c4.current, { xPercent: offscreenOffset, yPercent: 0, rotation: 0 });
       gsap.set(howContentRef.current, { xPercent: 0, yPercent: 0, rotation: 0 });
 
-      // Handle resize for dynamic positioning
+      // ResizeObserver for better performance and precision
+      const resizeObserver = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          const newOffscreenOffset = calculateOffscreenOffset();
+          
+          // Update offscreen cards with smooth transition
+          gsap.to([c2.current, c3.current, c4.current], {
+            xPercent: newOffscreenOffset,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+
+          // Refresh ScrollTrigger to recalculate positions
+          ScrollTrigger.refresh();
+        }
+      });
+
+      // Observe the section for size changes
+      if (sectionRef.current) {
+        resizeObserver.observe(sectionRef.current);
+      }
+
+      // Fallback window resize listener for older browsers
       const handleResize = () => {
-        const newOffscreenOffset = (window.innerWidth - cardWidth) / cardWidth * 100 + 20;
+        const newOffscreenOffset = calculateOffscreenOffset();
         gsap.set(c2.current, { xPercent: newOffscreenOffset });
         gsap.set(c3.current, { xPercent: newOffscreenOffset });
         gsap.set(c4.current, { xPercent: newOffscreenOffset });
+        ScrollTrigger.refresh();
       };
 
       window.addEventListener('resize', handleResize);
@@ -73,6 +100,7 @@ const HowSectionDesktop = () => {
       ScrollTrigger.refresh();
 
       return () => {
+        resizeObserver.disconnect();
         window.removeEventListener('resize', handleResize);
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       };
@@ -93,7 +121,7 @@ const HowSectionDesktop = () => {
                 <h2 className="text-3xl sm:text-2xl lg:text-3xl font-semibold text-gray-900 dark:text-white leading-tight">
                   How It Works
                 </h2>
-                <p className="text-md sm:text-lg lg:text-[18px] text-gray-700 dark:text-white/90 leading-tight sm:leading-relaxed lg:leading-relaxed">
+                <p className="text-md sm:text-lg lg:text-[18px] text-gray-700 dark:text-white/90 leading-tight sm:leading-relaxed lg:leading-relaxed lg:max-w-[75%]">
                   A simple and streamlined approach designed to completely transform and modernize your grading workflow, making it faster, easier, and far more efficient than ever before.
                 </p>
               </div>
@@ -107,9 +135,9 @@ const HowSectionDesktop = () => {
           >
             {/* Card 1 - Upload Assignment */}
             <div 
-              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl shadow-2xl transform-gpu p-6 lg:p-8 bg-gradient-to-br from-[#48dbfb] to-[#0abde3]"
+              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl transform-gpu p-6 lg:p-8"
               ref={c1} 
-              style={{ zIndex: 2 }}
+              style={{ zIndex: 2, boxShadow: '8px 8px 0px rgba(45, 44, 43, 0.08)', backgroundColor: '#0091FF' }}
             >
               <div className="text-center">
                 <h1 className="text-2xl font-bold mb-3 text-gray-900">Upload Assignment</h1>
@@ -122,9 +150,9 @@ const HowSectionDesktop = () => {
 
             {/* Card 2 - AI Analysis */}
             <div 
-              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl shadow-2xl transform-gpu p-6 lg:p-8 bg-gradient-to-br from-[#a55eea] to-[#8b5cf6]"
+              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl transform-gpu p-6 lg:p-8"
               ref={c2} 
-              style={{ zIndex: 3 }}
+              style={{ zIndex: 3, boxShadow: '8px 8px 0px rgba(45, 44, 43, 0.08)', backgroundColor: '#9526CC' }}
             >
               <div className="text-center">
                 <h1 className="text-2xl font-bold mb-3 text-gray-900">AI Analysis</h1>
@@ -137,9 +165,9 @@ const HowSectionDesktop = () => {
 
             {/* Card 3 - Instant Results */}
             <div 
-              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl shadow-2xl transform-gpu p-6 lg:p-8 bg-gradient-to-br from-[#2ed573] to-[#1e90ff]"
+              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl transform-gpu p-6 lg:p-8"
               ref={c3} 
-              style={{ zIndex: 4 }}
+              style={{ zIndex: 4, boxShadow: '8px 8px 0px rgba(45, 44, 43, 0.08)', backgroundColor: '#FF8400' }}
             >
               <div className="text-center">
                 <h1 className="text-2xl font-bold mb-3 text-gray-900">Instant Results</h1>
@@ -152,9 +180,9 @@ const HowSectionDesktop = () => {
 
             {/* Card 4 - Export & Share */}
             <div 
-              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl shadow-2xl transform-gpu p-6 lg:p-8 bg-gradient-to-br from-[#ff6b6b] to-[#ee5a24]"
+              className="absolute w-[90%] lg:w-full max-w-[350px] lg:max-w-[400px] aspect-[3/4] text-white flex justify-center items-center rounded-2xl transform-gpu p-6 lg:p-8"
               ref={c4} 
-              style={{ zIndex: 5 }}
+              style={{ zIndex: 5, boxShadow: '8px 8px 0px rgba(45, 44, 43, 0.08)', backgroundColor: '#FDE600' }}
             >
               <div className="text-center">
                 <h1 className="text-2xl font-bold mb-3 text-gray-900">Export & Share</h1>
